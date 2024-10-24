@@ -1,4 +1,3 @@
-from typing import List, Dict
 from langchain.memory import ConversationBufferMemory
 from langchain.utilities import GoogleSerperAPIWrapper
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -154,7 +153,6 @@ class ChatBot:
         self.chat_history.append({"role": "user", "content": user_input})
 
         search_results = self.search_web(user_input)
-        print(search_results)
         response = self.generate_response(user_input, search_results)
 
         self.chat_history.append({"role": "assistant", "content": response})
@@ -164,9 +162,3 @@ class ChatBot:
         )
 
         return response
-
-    def get_chat_history(self) -> List[Dict[str, str]]:
-        """
-        Return the chat history
-        """
-        return self.chat_history
